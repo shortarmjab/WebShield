@@ -1,15 +1,296 @@
-<!DOCTYPE html>
-<html>
-<head>
-    <title>WebShield Scanner</title>
-</head>
-<body>
-    <h1>WebShield</h1>
-    <h3>Automated Web Vulnerability Scanner</h3>
+<!-- templates/index.html -->
 
-    <form method="POST">
-        <input type="text" name="url" placeholder="Enter website URL (example.com)" required>
-        <button type="submit">Scan Website</button>
-    </form>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>WebShield</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<!-- NAVBAR -->
+
+<nav class="navbar">
+
+    <div class="logo">
+
+        🛡 WebShield
+
+    </div>
+
+    <ul class="nav-links">
+
+        <li>Scanner</li>
+
+        <li>Solutions</li>
+
+        <li>Reports</li>
+
+        <li>Resources</li>
+
+    </ul>
+
+    <button class="nav-btn">
+
+        Start Scan
+
+    </button>
+
+</nav>
+
+<!-- HERO SECTION -->
+
+<section class="hero">
+
+    <!-- LEFT -->
+
+    <div class="hero-left">
+
+        <div class="tag">
+
+            ADVANCED SECURITY
+
+        </div>
+
+        <h1>
+
+            Website <br>
+            Vulnerability <br>
+            Scanner
+
+        </h1>
+
+        <p>
+
+            Detect SQL Injection, XSS,
+            insecure headers, server weaknesses
+            and real-time cyber threats with an
+            advanced security dashboard.
+
+        </p>
+
+    </div>
+
+    <!-- RIGHT -->
+
+    <div class="hero-right">
+
+        <div class="scanner-card">
+
+            <!-- TABS -->
+
+            <div class="scan-tabs">
+
+                <div class="tab active-tab"
+                     onclick="changeTab(this,
+                     'Deep vulnerability scan with advanced security tests')">
+
+                    Deep Scan
+
+                </div>
+
+                <div class="tab"
+                     onclick="changeTab(this,
+                     'Fast lightweight scan for quick analysis')">
+
+                    Light Scan
+
+                </div>
+
+                <div class="tab"
+                     onclick="changeTab(this,
+                     'AI-powered threat and anomaly detection')">
+
+                    AI Detection
+
+                </div>
+
+            </div>
+
+            <!-- CONTENT -->
+
+            <div class="scan-content">
+
+                <h3>
+
+                    Target Website
+
+                </h3>
+
+                <p id="scanDescription"
+                   class="scan-description">
+
+                    Deep vulnerability scan with advanced security tests
+
+                </p>
+
+                <!-- FUNCTIONAL FORM -->
+
+                <form action="/scan"
+                      method="POST">
+
+                    <input type="text"
+                           name="url"
+                           placeholder="https://example.com"
+                           required>
+
+                    <button type="submit">
+
+                        ▶ Start Vulnerability Scan
+
+                    </button>
+
+                </form>
+
+                <!-- INFO BOXES -->
+
+                <div class="scan-info">
+
+                    <div class="info-box">
+
+                        <h4>
+
+                            SQLi
+
+                        </h4>
+
+                        <p>
+
+                            Injection Test
+
+                        </p>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <h4>
+
+                            XSS
+
+                        </h4>
+
+                        <p>
+
+                            Script Detection
+
+                        </p>
+
+                    </div>
+
+                    <div class="info-box">
+
+                        <h4>
+
+                            Headers
+
+                        </h4>
+
+                        <p>
+
+                            Security Analysis
+
+                        </p>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- FEATURES -->
+
+<section class="features-section">
+
+    <div class="feature-card">
+
+        <h2>
+
+            ⚡ Real-Time Detection
+
+        </h2>
+
+        <p>
+
+            Instantly analyze website vulnerabilities
+            and detect security flaws.
+
+        </p>
+
+    </div>
+
+    <div class="feature-card">
+
+        <h2>
+
+            🛡 Advanced Security
+
+        </h2>
+
+        <p>
+
+            Detect XSS, SQL Injection,
+            weak headers and web risks.
+
+        </p>
+
+    </div>
+
+    <div class="feature-card">
+
+        <h2>
+
+            📊 Detailed Reports
+
+        </h2>
+
+        <p>
+
+            Generate professional vulnerability
+            scan reports with insights.
+
+        </p>
+
+    </div>
+
+</section>
+
+<!-- JAVASCRIPT -->
+
+<script>
+
+function changeTab(element, text){
+
+    let tabs = document.querySelectorAll('.tab');
+
+    tabs.forEach(tab => {
+
+        tab.classList.remove('active-tab');
+
+    });
+
+    element.classList.add('active-tab');
+
+    document.getElementById("scanDescription").innerHTML = text;
+}
+
+</script>
+
 </body>
 </html>

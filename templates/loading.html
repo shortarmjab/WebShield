@@ -1,0 +1,114 @@
+<!-- templates/loading.html -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Scanning...</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+
+<div class="loading-page">
+
+    <div class="loading-card">
+
+        <h1>🛡 WebShield Scanner</h1>
+
+        <p>
+            Scanning website vulnerabilities...
+        </p>
+
+        <div class="progress-container">
+
+            <div class="progress-bar" id="progressBar">
+
+                0%
+
+            </div>
+
+        </div>
+
+        <div class="loading-status" id="statusText">
+
+            Initializing Security Scan...
+
+        </div>
+
+    </div>
+
+</div>
+
+<script>
+
+let progress = 0;
+
+const bar = document.getElementById("progressBar");
+
+const statusText = document.getElementById("statusText");
+
+const messages = [
+
+    "Checking HTTP Security...",
+    "Analyzing Headers...",
+    "Scanning Vulnerabilities...",
+    "Detecting SQL Injection...",
+    "Testing XSS Protection...",
+    "Generating Security Report..."
+];
+
+const interval = setInterval(() => {
+
+    progress += 1;
+
+    bar.style.width = progress + "%";
+
+    bar.innerHTML = progress + "%";
+
+    if(progress < 20){
+
+        statusText.innerHTML = messages[0];
+
+    }else if(progress < 40){
+
+        statusText.innerHTML = messages[1];
+
+    }else if(progress < 60){
+
+        statusText.innerHTML = messages[2];
+
+    }else if(progress < 75){
+
+        statusText.innerHTML = messages[3];
+
+    }else if(progress < 90){
+
+        statusText.innerHTML = messages[4];
+
+    }else{
+
+        statusText.innerHTML = messages[5];
+
+    }
+
+    if(progress >= 100){
+
+        clearInterval(interval);
+
+        window.location.href = "/result";
+
+    }
+
+}, 40);
+
+</script>
+
+</body>
+</html>
