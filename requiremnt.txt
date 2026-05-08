@@ -1,0 +1,6 @@
+Flask
+requests
+reportlab
+firebase-admin
+pyrebase4
+gunicorn

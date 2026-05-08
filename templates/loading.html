@@ -1,16 +1,25 @@
-<!-- templates/loading.html -->
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
 
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta charset="UTF-8">
 
-    <title>Scanning...</title>
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
 
-    <link rel="stylesheet"
-          href="{{ url_for('static', filename='style.css') }}">
+<meta http-equiv="Cache-Control"
+      content="no-cache, no-store, must-revalidate">
+
+<meta http-equiv="Pragma"
+      content="no-cache">
+
+<meta http-equiv="Expires"
+      content="0">
+
+<title>Scanning...</title>
+
+<link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
 
 </head>
 
@@ -20,15 +29,24 @@
 
     <div class="loading-card">
 
-        <h1>🛡 WebShield Scanner</h1>
+        <h1>
+
+            🛡 WebShield Scanner
+
+        </h1>
 
         <p>
+
             Scanning website vulnerabilities...
+
         </p>
+
+        <!-- PROGRESS -->
 
         <div class="progress-container">
 
-            <div class="progress-bar" id="progressBar">
+            <div class="progress-bar"
+                 id="progressBar">
 
                 0%
 
@@ -36,9 +54,12 @@
 
         </div>
 
-        <div class="loading-status" id="statusText">
+        <!-- STATUS -->
 
-            Initializing Security Scan...
+        <div class="loading-status"
+             id="loadingStatus">
+
+            Initializing Scan...
 
         </div>
 
@@ -48,65 +69,82 @@
 
 <script>
 
+if(sessionStorage.getItem("scanCompleted")){
+
+    window.location.replace("/");
+
+}
+
 let progress = 0;
 
-const bar = document.getElementById("progressBar");
+const progressBar =
+document.getElementById("progressBar");
 
-const statusText = document.getElementById("statusText");
+const loadingStatus =
+document.getElementById("loadingStatus");
 
 const messages = [
 
-    "Checking HTTP Security...",
-    "Analyzing Headers...",
-    "Scanning Vulnerabilities...",
-    "Detecting SQL Injection...",
+    "Initializing Scan...",
+
+    "Checking Security Headers...",
+
+    "Analyzing HTTPS Protection...",
+
     "Testing XSS Protection...",
-    "Generating Security Report..."
+
+    "Scanning Vulnerabilities...",
+
+    "Generating Final Report..."
 ];
+
+let index = 0;
 
 const interval = setInterval(() => {
 
-    progress += 1;
+    progress += 2;
 
-    bar.style.width = progress + "%";
+    progressBar.style.width =
+    progress + "%";
 
-    bar.innerHTML = progress + "%";
+    progressBar.innerHTML =
+    progress + "%";
 
-    if(progress < 20){
+    if(progress % 20 === 0 &&
+       index < messages.length){
 
-        statusText.innerHTML = messages[0];
+        loadingStatus.innerHTML =
+        messages[index];
 
-    }else if(progress < 40){
-
-        statusText.innerHTML = messages[1];
-
-    }else if(progress < 60){
-
-        statusText.innerHTML = messages[2];
-
-    }else if(progress < 75){
-
-        statusText.innerHTML = messages[3];
-
-    }else if(progress < 90){
-
-        statusText.innerHTML = messages[4];
-
-    }else{
-
-        statusText.innerHTML = messages[5];
-
+        index++;
     }
 
     if(progress >= 100){
 
         clearInterval(interval);
 
-        window.location.href = "/result";
+        sessionStorage.setItem(
+            "scanCompleted",
+            "true"
+        );
 
+        window.location.replace("/result");
     }
 
-}, 40);
+}, 80);
+
+window.addEventListener(
+
+    "pageshow",
+
+    function(event){
+
+        if(event.persisted){
+
+            window.location.replace("/");
+        }
+    }
+);
 
 </script>
 

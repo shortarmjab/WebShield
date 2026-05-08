@@ -26,16 +26,55 @@
 
     <ul class="nav-links">
 
-        <li>Summary</li>
-        <li>Findings</li>
-        <li>Tests</li>
-        <li>Parameters</li>
+        <li>
+            <a href="#summary-section">
+                Summary
+            </a>
+        </li>
+
+        <li>
+            <a href="#findings-section">
+                Findings
+            </a>
+        </li>
+
+        <li>
+            <a href="#tests-section">
+                Tests
+            </a>
+        </li>
+
+        <li>
+            <a href="#parameters-section">
+                Parameters
+            </a>
+        </li>
 
     </ul>
 
-    <button class="nav-btn">
-        Finished
-    </button>
+    <div class="auth-buttons">
+
+        <a href="/">
+
+            <button class="nav-btn login-btn">
+
+                Scan Another
+
+            </button>
+
+        </a>
+
+        <a href="/download-report">
+
+            <button class="nav-btn">
+
+                Download Report
+
+            </button>
+
+        </a>
+
+    </div>
 
 </nav>
 
@@ -43,7 +82,10 @@
 
 <section class="result-page">
 
-    <div class="result-header">
+    <!-- SUMMARY -->
+
+    <div class="result-header"
+         id="summary-section">
 
         <h1>Website Scanner Report</h1>
 
@@ -63,7 +105,7 @@
 
     </div>
 
-    <!-- SUMMARY -->
+    <!-- SUMMARY GRID -->
 
     <div class="summary-grid">
 
@@ -96,7 +138,8 @@
 
     <!-- FINDINGS -->
 
-    <div class="finding-section">
+    <div class="finding-section"
+         id="findings-section">
 
         <h2>Findings</h2>
 
@@ -146,9 +189,52 @@
 
     </div>
 
-    <!-- DETAILS -->
+    <!-- TESTS -->
 
-    <div class="details-grid">
+    <div class="finding-section"
+         id="tests-section">
+
+        <h2>Tests Performed</h2>
+
+        <div class="finding-card">
+
+            <div class="severity low">
+
+                INFO
+
+            </div>
+
+            <div class="finding-content">
+
+                <h3>Security Tests Executed</h3>
+
+                <p>
+
+                    Header Analysis,
+                    HTTPS Verification,
+                    XSS Protection Check,
+                    Clickjacking Detection,
+                    MIME Sniffing Detection
+                    and Security Validation.
+
+                </p>
+
+                <span class="safe">
+
+                    40 Security Tests Completed
+
+                </span>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- PARAMETERS -->
+
+    <div class="details-grid"
+         id="parameters-section">
 
         <div class="detail-box">
             <h4>Start Time</h4>
